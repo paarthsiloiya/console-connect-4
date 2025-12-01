@@ -3,7 +3,7 @@ from typing import Tuple, Dict, Optional, List, Set
 from board import Board
 
 
-class AI:
+class NewAI:
     MIN_DEPTH = 6
     MAX_DEPTH = 12
     EXACT = 0

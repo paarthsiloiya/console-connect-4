@@ -116,32 +116,48 @@ class Display:
         return input(f"  {Fore.GREEN}Enter choice: {Style.RESET_ALL}").strip().lower()
 
     @staticmethod
-    def print_turn(player: int, is_computer: bool = False):
+    def print_turn(player: int, is_computer: bool = False, vs_computer: bool = False):
         if is_computer:
             print(f"  {Fore.MAGENTA}Computer is thinking...{Style.RESET_ALL}")
         else:
             color = Fore.RED if player == Board.PLAYER1 else Fore.YELLOW
-            name = "Player 1" if player == Board.PLAYER1 else "Player 2"
-            print(f"  {color}{name}'s turn{Style.RESET_ALL}")
+            if vs_computer:
+                name = "Your"
+            else:
+                name = "Player 1's" if player == Board.PLAYER1 else "Player 2's"
+            print(f"  {color}{name} turn{Style.RESET_ALL}")
 
     @staticmethod
     def print_winner(player: int, is_computer: bool = False):
+        print()
         if is_computer and player == Board.PLAYER2:
-            print(f"\n  {Fore.MAGENTA}{'*' * 30}{Style.RESET_ALL}")
-            print(f"  {Fore.MAGENTA}  Computer wins!{Style.RESET_ALL}")
-            print(f"  {Fore.MAGENTA}{'*' * 30}{Style.RESET_ALL}\n")
+            color = Fore.MAGENTA
+            title = "Computer Wins!"
+        elif is_computer and player == Board.PLAYER1:
+            color = Fore.GREEN
+            title = "You Win!"
         else:
             color = Fore.RED if player == Board.PLAYER1 else Fore.YELLOW
-            name = "Player 1" if player == Board.PLAYER1 else "Player 2"
-            print(f"\n  {color}{'*' * 30}{Style.RESET_ALL}")
-            print(f"  {color}  {name} wins!{Style.RESET_ALL}")
-            print(f"  {color}{'*' * 30}{Style.RESET_ALL}\n")
+            title = "Player 1 Wins!" if player == Board.PLAYER1 else "Player 2 Wins!"
+        
+        print(f"  {color}{Display.TOP_LEFT}{Display.HORIZONTAL * 44}{Display.TOP_RIGHT}{Style.RESET_ALL}")
+        print(f"  {color}{Display.VERTICAL}{Style.RESET_ALL}{' ' * 44}{color}{Display.VERTICAL}{Style.RESET_ALL}")
+        print(f"  {color}{Display.VERTICAL}{Style.RESET_ALL}{color}{title.center(44)}{Style.RESET_ALL}{color}{Display.VERTICAL}{Style.RESET_ALL}")
+        print(f"  {color}{Display.VERTICAL}{Style.RESET_ALL}{' ' * 44}{color}{Display.VERTICAL}{Style.RESET_ALL}")
+        print(f"  {color}{Display.BOTTOM_LEFT}{Display.HORIZONTAL * 44}{Display.BOTTOM_RIGHT}{Style.RESET_ALL}")
+        print()
 
     @staticmethod
     def print_draw():
-        print(f"\n  {Fore.WHITE}{'*' * 30}{Style.RESET_ALL}")
-        print(f"  {Fore.WHITE}  It's a draw!{Style.RESET_ALL}")
-        print(f"  {Fore.WHITE}{'*' * 30}{Style.RESET_ALL}\n")
+        color = Fore.WHITE
+        title = "It's a Draw!"
+        print()
+        print(f"  {color}{Display.TOP_LEFT}{Display.HORIZONTAL * 44}{Display.TOP_RIGHT}{Style.RESET_ALL}")
+        print(f"  {color}{Display.VERTICAL}{Style.RESET_ALL}{' ' * 44}{color}{Display.VERTICAL}{Style.RESET_ALL}")
+        print(f"  {color}{Display.VERTICAL}{Style.RESET_ALL}{color}{title.center(44)}{Style.RESET_ALL}{color}{Display.VERTICAL}{Style.RESET_ALL}")
+        print(f"  {color}{Display.VERTICAL}{Style.RESET_ALL}{' ' * 44}{color}{Display.VERTICAL}{Style.RESET_ALL}")
+        print(f"  {color}{Display.BOTTOM_LEFT}{Display.HORIZONTAL * 44}{Display.BOTTOM_RIGHT}{Style.RESET_ALL}")
+        print()
 
     @staticmethod
     def get_move_input() -> str:

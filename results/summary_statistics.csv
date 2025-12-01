@@ -1,0 +1,11 @@
+Metric,Overall,Phase 1 (New First),Phase 2 (Old First)
+Total Games,100,50,50
+New AI Wins,67,47,20
+Old AI Wins,12,3,9
+Draws,21,0,21
+New AI Win Rate (%),67.0,94.0,40.0
+Old AI Win Rate (%),12.0,6.0,18.0
+Avg Game Time (s),45.59,58.33,32.84
+Avg New AI Move Time (ms),1996.68,2587.86,1405.51
+Avg Old AI Move Time (ms),429.49,583.34,275.64
+Avg Moves per Game,37.4,35.6,39.3

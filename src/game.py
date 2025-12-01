@@ -41,7 +41,7 @@ class Game:
             Display.render_board(self.board)
             
             is_computer_turn = self.vs_computer and self.current_player == Board.PLAYER2
-            Display.print_turn(self.current_player, is_computer_turn)
+            Display.print_turn(self.current_player, is_computer_turn, self.vs_computer)
             
             if is_computer_turn:
                 self.last_computer_move = self.computer_move()
